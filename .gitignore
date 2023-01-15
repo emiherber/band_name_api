@@ -553,3 +553,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 band_name_web_api/appsettings.json
+band_name_web_api/appsettings.Development.json

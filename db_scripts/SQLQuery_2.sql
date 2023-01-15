@@ -10,3 +10,10 @@ IF NOT EXISTS (
 )
 CREATE DATABASE flutterAvanzado
 GO
+
+CREATE TABLE [dbo].[Band] (
+    [id]    UNIQUEIDENTIFIER NOT NULL,
+    [name]  VARCHAR (250)    NOT NULL,
+    [votes] INT              CONSTRAINT [DEFAULT_Band_votes] DEFAULT 0 NULL,
+    CONSTRAINT [PK_Band] PRIMARY KEY CLUSTERED ([id] ASC)
+);

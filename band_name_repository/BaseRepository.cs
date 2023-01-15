@@ -12,19 +12,17 @@ public abstract class BaseRepository: IDisposable
   public BaseRepository(IConfiguration configuration)
   {
     _configuration = configuration;
-    var dbConfig = _configuration.GetSection("BaseDatos");
-    string connectionString = $"Server={dbConfig["Servidor"]},{dbConfig["Puerto"]};Initial Catalog={dbConfig["NombreBase"]}"
-     + $";MultipleActiveResultSets=true;User ID={dbConfig["Usuario"]};Password={dbConfig["Password"]}";
 
-    conexion = new SqlConnection(connectionString);
+    conexion = new SqlConnection(connectionString: _configuration["ConnectionStrings:SqlConnection"]);
     try
     {
       conexion.Open();
       conexion.Close();
     }
-    catch 
+    catch(Exception e)
     {
-      throw new Exception("No se pudo conectar a la base de datos.");
+      // throw new Exception("No se pudo conectar a la base de datos.");
+      throw e;
     }
   }
 
